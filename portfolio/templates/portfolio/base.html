@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineer & QA Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+
+    <nav class="bg-white shadow">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between">
+            <a href="/" class="font-bold text-xl text-blue-600">Portfolio</a>
+            <div class="space-x-4">
+                <a href="#projects" class="hover:text-blue-600">Projects</a>
+                <a href="#contact" class="hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <p>&copy; {% now "Y" %}. Built with Django & Python.</p>
+    </footer>
+
+</body>
+</html>
