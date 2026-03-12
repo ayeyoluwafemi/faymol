@@ -1,17 +1,92 @@
 {% extends 'portfolio/base.html' %}
 
 {% block content %}
-<section class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-    <div class="bg-gray-50 border border-gray-200 rounded-xl p-10 max-w-2xl shadow-sm">
-        <svg class="w-16 h-16 text-blue-600 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-        </svg>
-        
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Site Under Construction</h1>
-        <p class="text-lg text-gray-600 mb-8">I am currently updating my portfolio. Please check back soon to see my latest work and projects.</p>
-        
-        <a href="mailto:femiayeyemi@eden.net.ng" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Contact Me</a>
-    </div>
-</section>
+<div class="max-w-6xl mx-auto px-6">
+
+    <section class="py-24 md:py-32 max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-8">
+            Bridging Quality Assurance & Software Engineering.
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed mb-12 max-w-2xl">
+            I build reliable, production-grade applications with Python and Django. With a sharp eye for process optimization, I ensure code doesn't just work—it scales flawlessly.
+        </p>
+        <div class="flex gap-4">
+            <a href="#work" class="px-6 py-3 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition shadow-sm">
+                View My Work
+            </a>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <h2 class="text-3xl font-bold tracking-tight">Selected Work</h2>
+            <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition mt-4 md:mt-0 group">
+                View GitHub <span class="group-hover:ml-1 transition-all">→</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="https://vtu.eden.net.ng" target="_blank" class="group block">
+                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">
+                        [ EdenVTU Platform Screenshot ]
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">EdenVTU Portal</h3>
+                <p class="text-slate-600 mb-4 line-clamp-2">A comprehensive Virtual Top-Up platform powered by Django, Gunicorn, and Nginx. Built to handle secure, real-time automated transactions.</p>
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Python</span>
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Django</span>
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Tailwind</span>
+                </div>
+            </a>
+
+            <a href="#" class="group block">
+                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">
+                        [ Data Analytics / QA Project ]
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Process Optimization System</h3>
+                <p class="text-slate-600 mb-4 line-clamp-2">An internal tool designed to streamline quality control metrics and automate monthly reporting cycles.</p>
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Data Analytics</span>
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Automation</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="blog" class="py-20 border-t border-gray-200">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <h2 class="text-3xl font-bold tracking-tight">Writing & Insights</h2>
+            <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition mt-4 md:mt-0 group">
+                Read all posts <span class="group-hover:ml-1 transition-all">→</span>
+            </a>
+        </div>
+
+        <div class="flex flex-col gap-8">
+            <article class="group flex flex-col md:flex-row gap-4 md:gap-8 items-baseline py-4 border-b border-gray-100 hover:bg-white rounded-xl transition -mx-4 px-4">
+                <time class="text-sm text-slate-400 font-mono w-32 shrink-0">Mar 12, 2026</time>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
+                        <a href="#">Overcoming 502 Bad Gateways: A Django Deployment Story</a>
+                    </h3>
+                    <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">When deploying Django to production with Nginx and Gunicorn, socket permissions and port misconfigurations are the usual suspects. Here is how to debug them effectively.</p>
+                </div>
+            </article>
+
+            <article class="group flex flex-col md:flex-row gap-4 md:gap-8 items-baseline py-4 border-b border-gray-100 hover:bg-white rounded-xl transition -mx-4 px-4">
+                <time class="text-sm text-slate-400 font-mono w-32 shrink-0">Feb 25, 2026</time>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
+                        <a href="#">Why Software Engineers Make Great QA Specialists</a>
+                    </h3>
+                    <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">Understanding the underlying architecture of a web application allows for much more rigorous and automated quality assurance processes.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>
 {% endblock %}
