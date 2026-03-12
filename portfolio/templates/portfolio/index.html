@@ -61,6 +61,44 @@
         </div>
     </section>
 
+    <section id="about" class="py-20 border-t border-gray-200">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            
+            <div class="md:col-span-5 relative group">
+                <div class="aspect-[4/5] bg-slate-200 rounded-2xl overflow-hidden relative z-10">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-medium bg-slate-100">
+                        [ Portrait of Femi ]
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-slate-900 rounded-2xl translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500"></div>
+            </div>
+
+            <div class="md:col-span-7 md:pl-8">
+                <h2 class="text-3xl font-bold tracking-tight mb-6">Engineering with precision. Delivering with confidence.</h2>
+                
+                <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
+                    <p>
+                        I don't just write code; I architect systems that protect your bottom line. With a rare background spanning strict Quality Assurance compliance and full-stack software development, I bring an uncompromising level of rigor to the tech industry.
+                    </p>
+                    <p>
+                        Most applications fail because developers overlook the edge cases. My approach reverses that. Whether automating high-stakes financial transactions, optimizing data pipelines, or deploying rock-solid Django backends, my infrastructure is designed to be fault-tolerant from day one.
+                    </p>
+                    <p>
+                        When you work with me, you aren't just getting a developer. You are getting a technical partner who understands business processes, demands pristine code quality, and builds scalable platforms that let founders sleep well at night.
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <a href="mailto:femiayeyemi@eden.net.ng" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition shadow-sm group">
+                        Let's discuss your infrastructure 
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     {% if testimonials %}
     <section class="py-20 border-t border-gray-200 bg-gray-50/50 -mx-6 px-6">
         <div class="max-w-6xl mx-auto">
@@ -105,7 +143,7 @@
                 {% endfor %}
             {% else %}
                 <div class="py-8 text-slate-500 italic">
-                    Publishing soon. Check back later for insights on Python, QA, and deployment.
+                    Publishing soon. Check back later for insights on Python, QA, food safety and web deployment.
                 </div>
             {% endif %}
         </div>
