@@ -20,38 +20,35 @@
     <section id="work" class="py-20 border-t border-gray-200">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <h2 class="text-3xl font-bold tracking-tight">Selected Work</h2>
-            <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition mt-4 md:mt-0 group">
+            <a href="https://github.com/" target="_blank" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition mt-4 md:mt-0 group">
                 View GitHub <span class="group-hover:ml-1 transition-all">→</span>
             </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <a href="https://vtu.eden.net.ng" target="_blank" class="group block">
-                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative">
-                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">
-                        [ EdenVTU Platform Screenshot ]
-                    </div>
+                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative flex items-center justify-center">
+                    <span class="text-slate-400 font-medium tracking-wide">[ EdenVTU Platform ]</span>
                 </div>
                 <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">EdenVTU Portal</h3>
                 <p class="text-slate-600 mb-4 line-clamp-2">A comprehensive Virtual Top-Up platform powered by Django, Gunicorn, and Nginx. Built to handle secure, real-time automated transactions.</p>
-                <div class="flex gap-2">
+                <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Python</span>
                     <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Django</span>
-                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Tailwind</span>
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Nginx</span>
                 </div>
             </a>
 
             <a href="#" class="group block">
-                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative">
-                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">
-                        [ Data Analytics / QA Project ]
-                    </div>
+                <div class="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-200 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 relative flex items-center justify-center">
+                    <span class="text-slate-400 font-medium tracking-wide">[ QA / Analytics Dashboard ]</span>
                 </div>
-                <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Process Optimization System</h3>
-                <p class="text-slate-600 mb-4 line-clamp-2">An internal tool designed to streamline quality control metrics and automate monthly reporting cycles.</p>
-                <div class="flex gap-2">
+                <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Process Optimization & Metrics</h3>
+                <p class="text-slate-600 mb-4 line-clamp-2">Data analytics tools and tracking systems designed to streamline quality control metrics and automate monthly reporting cycles.</p>
+                <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Data Analytics</span>
                     <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">Automation</span>
+                    <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-slate-600">QA</span>
                 </div>
             </a>
         </div>
@@ -66,25 +63,23 @@
         </div>
 
         <div class="flex flex-col gap-8">
-            <article class="group flex flex-col md:flex-row gap-4 md:gap-8 items-baseline py-4 border-b border-gray-100 hover:bg-white rounded-xl transition -mx-4 px-4">
-                <time class="text-sm text-slate-400 font-mono w-32 shrink-0">Mar 12, 2026</time>
-                <div>
-                    <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
-                        <a href="#">Overcoming 502 Bad Gateways: A Django Deployment Story</a>
-                    </h3>
-                    <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">When deploying Django to production with Nginx and Gunicorn, socket permissions and port misconfigurations are the usual suspects. Here is how to debug them effectively.</p>
+            {% if recent_posts %}
+                {% for post in recent_posts %}
+                <article class="group flex flex-col md:flex-row gap-4 md:gap-8 items-baseline py-4 border-b border-gray-100 hover:bg-white rounded-xl transition -mx-4 px-4">
+                    <time class="text-sm text-slate-400 font-mono w-32 shrink-0">{{ post.published_at|date:"M d, Y" }}</time>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
+                            <a href="#">{{ post.title }}</a>
+                        </h3>
+                        <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">{{ post.content|truncatewords:30 }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="py-8 text-slate-500 italic">
+                    Publishing soon. Check back later for insights on Python, QA, and deployment.
                 </div>
-            </article>
-
-            <article class="group flex flex-col md:flex-row gap-4 md:gap-8 items-baseline py-4 border-b border-gray-100 hover:bg-white rounded-xl transition -mx-4 px-4">
-                <time class="text-sm text-slate-400 font-mono w-32 shrink-0">Feb 25, 2026</time>
-                <div>
-                    <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
-                        <a href="#">Why Software Engineers Make Great QA Specialists</a>
-                    </h3>
-                    <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">Understanding the underlying architecture of a web application allows for much more rigorous and automated quality assurance processes.</p>
-                </div>
-            </article>
+            {% endif %}
         </div>
     </section>
 
