@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('portfolio.urls')),  # Routes the homepage to your app
+    # Routes all /blog/ URLs to the blog app
+    path('blog/', include('blog.urls')),
 ]
 
 # This allows Django to serve your project images during development
