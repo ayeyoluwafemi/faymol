@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('portfolio.urls')),  # Routes the homepage to your app
     # Routes all /blog/ URLs to the blog app
     path('blog/', include('blog.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 # This allows Django to serve your project images during development

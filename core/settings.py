@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'blog',
+    'ckeditor',
+    'ckeditor_uploader',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +132,7 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Enables compression and caching of static files
 STORAGES = {
