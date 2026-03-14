@@ -11,3 +11,13 @@ def post_detail(request, slug):
         'post': post
     }
     return render(request, 'blog/post_detail.html', context)
+
+
+def post_list(request):
+    # Fetch ALL published posts, ordered by newest first
+    posts = Post.objects.filter(is_published=True).order_by('-published_at')
+
+    context = {
+        'posts': posts
+    }
+    return render(request, 'blog/post_list.html', context)
