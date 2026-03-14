@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-6 py-20 md:py-32">
+    
+    <a href="/#blog" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition mb-10 group">
+        <svg class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Home
+    </a>
+
+    <header class="mb-12 border-b border-gray-100 pb-8">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+            {{ post.title }}
+        </h1>
+        <div class="flex items-center gap-4 text-slate-500 text-sm font-mono">
+            <time datetime="{{ post.published_at|date:'Y-m-d' }}">{{ post.published_at|date:"F j, Y" }}</time>
+            <span>•</span>
+            <span>Femi Ayeyemi</span>
+        </div>
+    </header>
+
+    <article class="text-lg text-slate-700 leading-relaxed space-y-6">
+        {{ post.content|safe|linebreaks }}
+    </article>
+
+    <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500 font-medium">Thanks for reading.</p>
+        
+        <a href="mailto:hello@femiayeyemi.com?subject=Re: {{ post.title }}" class="inline-flex items-center px-5 py-2.5 bg-slate-50 text-slate-900 rounded-full text-sm font-medium hover:bg-slate-100 transition border border-gray-200">
+            Discuss this article
+            <svg class="w-4 h-4 ml-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        </a>
+    </div>
+
+</div>
+{% endblock %}
