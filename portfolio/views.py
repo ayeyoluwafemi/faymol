@@ -1,27 +1,46 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.conf import settings
+import urllib.request
+import urllib.parse
+import json
 from .models import Project
 from blog.models import Post
 
 
 def index(request):
-    # --- Handle the Contact Form Submission ---
     if request.method == 'POST':
+        # --- CLOUDFLARE TURNSTILE VERIFICATION ---
+        turnstile_response = request.POST.get('cf-turnstile-response', '')
+
+        data = urllib.parse.urlencode({
+            'secret': settings.TURNSTILE_SECRET_KEY,
+            'response': turnstile_response
+        }).encode('utf-8')
+
+        req = urllib.request.Request(
+            'https://challenges.cloudflare.com/turnstile/v0/siteverify', data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read())
+
+        if not result.get('success'):
+            messages.error(
+                request, "Security check failed. Please ensure you are a human and try again.")
+            return redirect('/#contact')
+        # -----------------------------------------
+
+        # Normal Processing Continues...
         name = request.POST.get('name')
         sender_email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        # 1. Format the notification email sent to YOU
         admin_message = f"New message from: {name} ({sender_email})\n\n{message}"
-
-        # 2. Format the auto-reply confirmation sent to the SENDER
         client_subject = "Message Received - Femi Ayeyemi"
         client_message = f"Hi {name},\n\nThank you for reaching out. This is an automated confirmation that I have received your message regarding '{subject}'.\n\nI will review your inquiry and get back to you shortly.\n\nBest regards,\n\nFemi Ayeyemi\nSoftware Engineer & QA Expert\nfemiayeyemi.com"
 
         try:
-            # Send the notification to your inbox
             send_mail(
                 subject=f"Website Inquiry: {subject}",
                 message=admin_message,
@@ -30,7 +49,6 @@ def index(request):
                 fail_silently=False,
             )
 
-            # Send the confirmation auto-reply to the client
             send_mail(
                 subject=client_subject,
                 message=client_message,
@@ -39,7 +57,6 @@ def index(request):
                 fail_silently=False,
             )
 
-            # Show success message on the website
             messages.success(
                 request, "Your message has been sent successfully. I will be in touch soon!")
             return redirect('/#contact')
@@ -49,7 +66,6 @@ def index(request):
                 request, "There was an error sending your message. Please try again.")
             return redirect('/#contact')
 
-    # --- Fetch Database Content ---
     featured_projects = Project.objects.all()
     recent_posts = Post.objects.filter(
         is_published=True).order_by('-published_at')[:3]
