@@ -5,12 +5,15 @@ from django.conf import settings
 import urllib.request
 import urllib.parse
 import json
+import time
 from .models import Project
 from blog.models import Post
-import time
 
 
 def index(request):
+    # ==========================================
+    # FORM SUBMISSION (POST)
+    # ==========================================
     if request.method == 'POST':
         # 1. CLOUDFLARE TURNSTILE VERIFICATION
         turnstile_response = request.POST.get('cf-turnstile-response', '')
@@ -28,19 +31,15 @@ def index(request):
             return redirect('/#contact')
 
         # 2. THE HONEYPOT TRAP
-        # If this hidden field has ANY data, it's a bot blindly filling out the form.
         if request.POST.get('company_website'):
-            # Fake success to fool the bot
             messages.success(
                 request, "Your message has been sent successfully.")
             return redirect('/#contact')
 
         # 3. RATE LIMITING (Cooldown Timer)
-        # Prevents the same user/bot from sending multiple emails in a 2-minute window
         last_submit = request.session.get('last_submit', 0)
         current_time = time.time()
         if current_time - last_submit < 120:
-            # Fake success
             messages.success(
                 request, "Your message has been sent successfully.")
             return redirect('/#contact')
@@ -50,14 +49,11 @@ def index(request):
         spam_keywords = ['http://', 'https://', 'crypto',
                          'seo', 'marketing', 'investment', 'bitcoin']
         if any(keyword in message.lower() for keyword in spam_keywords):
-            # Fake success
             messages.success(
                 request, "Your message has been sent successfully.")
             return redirect('/#contact')
 
         # --- IF IT PASSES ALL TRAPS, SEND THE EMAIL ---
-
-        # Start the cooldown timer
         request.session['last_submit'] = current_time
 
         name = request.POST.get('name')
@@ -93,3 +89,17 @@ def index(request):
             messages.error(
                 request, "There was an error sending your message. Please try again.")
             return redirect('/#contact')
+
+    # ==========================================
+    # PAGE LOAD (GET) - This is what was missing!
+    # ==========================================
+    featured_projects = Project.objects.all()
+    recent_posts = Post.objects.filter(
+        is_published=True).order_by('-published_at')[:3]
+
+    context = {
+        'featured_projects': featured_projects,
+        'recent_posts': recent_posts,
+    }
+
+    return render(request, 'portfolio/index.html', context)
