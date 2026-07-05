@@ -136,7 +136,7 @@
                         <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 transition">
                             <a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a>
                         </h3>
-                        <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">{{ post.content|truncatewords:30 }}</p>
+                        <p class="text-slate-600 line-clamp-2 text-sm max-w-3xl">{{ post.content|striptags|truncatewords:30 }}</p>
                     </div>
                 </article>
                 {% endfor %}
